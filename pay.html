@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="pay.css"> <!-- Linking CSS -->
+    <script src="pay.js" defer></script> <!-- Linking JavaScript -->
+</head>
+<body>
+    <div class="container">
+        <h2>Choose Payment Method</h2>
+
+        <!-- Payment Method Selection -->
+        <div class="payment-options">
+            <button onclick="showPaymentOption('upi')">UPI</button>
+            <button onclick="showPaymentOption('card')">Card</button>
+            <button onclick="showPaymentOption('netbanking')">Net Banking</button>
+        </div>
+
+        <!-- UPI Payment -->
+        <div id="upi-section" class="payment-section">
+            <h3>Pay Using UPI</h3>
+            <img src="qrcode.ppm" alt="QR Code" id="qr-code">
+            <p id="amount-display">Amount to Pay: ₹500</p>
+            <button onclick="processPayment()">I have Paid</button>
+        </div>
+
+        <!-- Card Payment -->
+        <div id="card-section" class="payment-section">
+            <h3>Pay Using Card</h3>
+            <label>Card Number:</label>
+            <input type="text" placeholder="1234 5678 9101 1121" maxlength="16">
+            <label>Expiry Date:</label>
+            <input type="text" placeholder="MM/YY">
+            <label>CVV:</label>
+            <input type="password" placeholder="***" maxlength="3">
+            <button onclick="processPayment()">Pay Now</button>
+        </div>
+
+        <!-- Net Banking -->
+        <div id="netbanking-section" class="payment-section">
+            <h3>Pay Using Net Banking</h3>
+            <label>Select Bank:</label>
+            <select id="bank-list" onchange="showBankDetails()">
+                <option value="">Select Your Bank</option>
+                <option value="sbi">State Bank of India</option>
+                <option value="hdfc">HDFC Bank</option>
+                <option value="icici">ICICI Bank</option>
+                <option value="axis">Axis Bank</option>
+            </select>
+
+            <!-- Bank Details Section (Hidden Initially) -->
+            <div id="bank-details" style="display: none;">
+                <label>Username:</label>
+                <input type="text" placeholder="Enter your bank username">
+                <label>Password:</label>
+                <input type="password" placeholder="Enter your password">
+                <button onclick="processPayment()">Proceed to Pay</button>
+            </div>
+        </div>
+
+        <!-- Payment Success Message -->
+        <p id="payment-message"></p>
+
+        <!-- Show Ticket Button (Initially Hidden) -->
+        <button id="show-ticket-btn" onclick="redirectToTicket()" style="display: none;">Show Ticket</button>
+    </div>
+</body>
+</html>

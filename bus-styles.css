@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('background.jpg') no-repeat center center fixed; /* Add background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
+}
+
+/* Header */
+header {
+    background: rgba(0, 51, 102, 0.7); /* A semi-transparent background for readability */
+    padding: 15px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Navigation Buttons */
+.top-nav {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.top-nav button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.top-nav button:hover {
+    background: #e6b800;
+}
+
+/* Filter Section */
+.bus-filter {
+    background: rgba(255, 255, 255, 0.9); /* A slightly transparent white background */
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.filter-fields {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-fields select,
+.filter-fields button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-fields button {
+    background: #ff6600;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-fields button:hover {
+    background: #cc5200;
+}
+
+/* Bus List */
+#bus-list {
+    width: 90%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9); /* A slightly transparent white background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#buses {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Bus Card */
+.bus-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 5px solid #003366;
+    display: flex;
+    flex-direction: column;
+}
+
+.bus-card h3 {
+    margin: 5px 0;
+}
+
+.bus-card p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.book-now {
+    background: #ff6600;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.book-now:hover {
+    background: #cc5200;
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking - Book Now</title>
+    <link rel="stylesheet" href="booknow.css"> <!-- Add the relevant styles -->
+    <script src="booknow.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <h1 class="title">BMTC Bus Booking</h1>
+        </div>
+    </header>
+
+    <!-- Main Booking Form -->
+    <div class="container">
+        <h2>Book Your Ticket</h2>
+
+        <form id="booking-form" onsubmit="return handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bus-number">Bus Number:</label>
+                <input type="text" id="bus-number" value="13" disabled />
+            </div>
+
+            <div class="form-group">
+                <label for="from">From:</label>
+                <select id="from" required>
+                    <option value="">Select Starting Location</option>
+                    <option value="Shivajinagara Bus Station">Shivajinagara</option>
+                    <option value="Kempegowda Bus Station">Kempegowda</option>
+                    <option value="Brookefield">Brookefield</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="to">To:</label>
+                <select id="to" required>
+                    <option value="">Select Destination</option>
+                    <option value="Banashankari TTMC">Banashankari</option>
+                    <option value="Majestic">Majestic</option>
+                    <option value="Yelahanka">Yelahanka</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required />
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" required />
+            </div>
+
+            <div class="form-group">
+                <label for="seats">Number of Seats:</label>
+                <input type="number" id="seats" min="1" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required />
+            </div>
+
+            <!-- Get OTP Button -->
+            <button type="button" id="get-otp-btn" onclick="getOTP()">Get OTP</button>
+
+            <!-- OTP Display & Input Section -->
+            <div class="otp-section" style="display:none;">
+                <p><strong>Your OTP:</strong> <span id="otp-display"></span></p> <!-- OTP will be displayed here -->
+                <div class="form-group">
+                    <label for="otp">Enter OTP:</label>
+                    <input type="text" id="otp" required />
+                    <button type="button" onclick="verifyOTP()">Verify OTP</button>
+                </div>
+                <p id="otp-message"></p>
+            </div>
+
+            <button type="submit" id="pay-btn" style="display:none;">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <script>
+        let generatedOTP = '';
+
+        function getOTP() {
+            // Generate a random 6-digit OTP
+            generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+            // Show OTP on screen
+            document.getElementById("otp-display").textContent = generatedOTP; 
+
+            console.log("Generated OTP:", generatedOTP); // For debugging
+
+            // Show OTP input section
+            document.querySelector(".otp-section").style.display = "block";
+
+            // Disable the "Get OTP" button
+            document.getElementById("get-otp-btn").disabled = true;
+            document.getElementById("get-otp-btn").textContent = "OTP Sent";
+        }
+
+        function verifyOTP() {
+            const enteredOTP = document.getElementById("otp").value;
+            const otpMessage = document.getElementById("otp-message");
+
+            if (enteredOTP === generatedOTP) {
+                otpMessage.textContent = "✅ OTP Verified Successfully!";
+                otpMessage.style.color = "green";
+                document.getElementById("pay-btn").style.display = "inline-block"; // Show the "Proceed to Payment" button
+            } else {
+                otpMessage.textContent = "❌ OTP entered is incorrect.";
+                otpMessage.style.color = "red";
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const bookingDetails = {
+                name: document.getElementById("name").value,
+                gender: document.getElementById("gender").value,
+                busNumber: document.getElementById("bus-number").value,
+                from: document.getElementById("from").value,
+                to: document.getElementById("to").value,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value,
+                seats: document.getElementById("seats").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value
+            };
+
+            console.log("Booking Details:", bookingDetails);
+
+            // Redirect to payment page
+            window.location.href = "pay.html";
+        }
+    </script>
+</body>
+</html>
+<!-- Modify the Form Submit Function -->
+<script>
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        // Collect Booking Details
+        const name = document.getElementById("name").value;
+        const gender = document.getElementById("gender").value;
+        const busNumber = document.getElementById("bus-number").value;
+        const from = document.getElementById("from").value;
+        const to = document.getElementById("to").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const seats = document.getElementById("seats").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+
+        // Store Data in Local Storage
+        localStorage.setItem("name", name);
+        localStorage.setItem("gender", gender);
+        localStorage.setItem("busNumber", busNumber);
+        localStorage.setItem("from", from);
+        localStorage.setItem("to", to);
+        localStorage.setItem("date", date);
+        localStorage.setItem("time", time);
+        localStorage.setItem("seats", seats);
+        localStorage.setItem("email", email);
+        localStorage.setItem("phone", phone);
+
+        // Redirect to Payment Page
+        window.location.href = "pay.html";
+    }
+</script>

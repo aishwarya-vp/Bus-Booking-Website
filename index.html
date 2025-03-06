@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMTC Bus Booking App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>BMTC Bus Booking App</h1>
+
+        <!-- Signup Page -->
+        <div id="signup-section">
+            <h2>Sign Up</h2>
+            <input type="email" id="signup-email" placeholder="Enter your email" required>
+            <input type="password" id="signup-password" placeholder="Create a password" required>
+            <button onclick="signUp()">Sign Up</button>
+            <p id="signup-message"></p>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-section" class="hidden">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Enter your email" required>
+            <input type="password" id="login-password" placeholder="Enter password" required>
+            <a href="book.html"><button>Login</button></a>
+            <p id="login-message"></p>
+            <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign Up</a></p>
+        </div>
+
+        <!-- Forgot Password Page -->
+        <div id="forgot-password-section" class="hidden">
+            <h2>Reset Password</h2>
+            <input type="email" id="reset-email" placeholder="Enter your email" required>
+            <input type="password" id="new-password" placeholder="Enter new password" required>
+            <button onclick="resetPassword()">Reset Password</button>
+            <p id="reset-message"></p>
+            <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Handle login logic
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const loginMessage = document.getElementById('login-message');
+            
+            // Simple email and password validation (you should replace this with your backend validation)
+            if (email === 'user@example.com' && password === 'password123') {
+                // Store login status
+                localStorage.setItem('isLoggedIn', 'true');
+                // Redirect to booking page
+                window.location.href = 'book.html';
+            } else {
+                loginMessage.textContent = 'Invalid email or password.';
+            }
+        }
+
+        // Toggle to show login page
+        function showLogin() {
+            document.getElementById('signup-section').classList.add('hidden');
+            document.getElementById('login-section').classList.remove('hidden');
+        }
+
+        // Toggle to show sign up page
+        function showSignUp() {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('signup-section').classList.remove('hidden');
+        }
+
+        // Handle signup logic
+        function signUp() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const signupMessage = document.getElementById('signup-message');
+            
+            // Add user registration logic here
+            signupMessage.textContent = 'Sign Up successful! You can now login.';
+            showLogin();
+        }
+    </script>
+</body>
+
+</html>

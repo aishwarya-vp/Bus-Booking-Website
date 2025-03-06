@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket</title>
+    <link rel="stylesheet" href="ticket.css"> <!-- Linking CSS -->
+    <script src="ticket.js" defer></script> <!-- Linking JavaScript -->
+</head>
+<body>
+    <div class="container">
+        <h2>Your Ticket</h2>
+
+        <!-- Ticket Details -->
+        <div class="ticket-details">
+            <p><strong>Name:</strong> <span id="ticket-name"></span></p>
+            <p><strong>Gender:</strong> <span id="ticket-gender"></span></p>
+            <p><strong>Bus Number:</strong> <span id="ticket-bus-number"></span></p>
+            <p><strong>From:</strong> <span id="ticket-from"></span></p>
+            <p><strong>To:</strong> <span id="ticket-to"></span></p>
+            <p><strong>Date:</strong> <span id="ticket-date"></span></p>
+            <p><strong>Time:</strong> <span id="ticket-time"></span></p>
+            <p><strong>Seats:</strong> <span id="ticket-seats"></span></p>
+            <p><strong>Email:</strong> <span id="ticket-email"></span></p>
+            <p><strong>Phone:</strong> <span id="ticket-phone"></span></p>
+        </div>
+
+        <!-- Download Ticket Button -->
+        <button onclick="downloadTicket()">Download Ticket</button>
+
+        <!-- Home Button -->
+        <button onclick="goToHome()">Go to Home</button>
+
+        <!-- Ticket Download Message -->
+        <p id="download-message"></p>
+    </div>
+</body>
+</html>
